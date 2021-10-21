@@ -1,0 +1,29 @@
+Interpolation error -> for x[11], y[11] values in Excel
+Noritek VFD Display Model No. CU16025
+Escape Key -> * x2
+
+RAM -> Volatile Memory -> Memory needs to be saved -> Save button -> Arrays created return values to flash memory which is Non-volatile -> when device is powered on -> array data read previous data again.
+
+
+1 -> 5 -> error
+2 -> 20 -> correct
+3 -> 25 -> correct
+4 -> 40
+5 -> 53
+6 -> 60
+7 -> 75
+8 -> 80
+9 -> 93
+10 -> 100
+11 -> 110
+
+vin = 0.998 to v in = 1.11 -> increment of 1mV
+
+How to implement in display -> toggle button
+
+
+1. Escape Key (double-click)
+2. Toggle Key (arrow-key)
+3. Save Key (flash memory)
+
+How to create your own library?
