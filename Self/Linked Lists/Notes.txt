@@ -1,0 +1,235 @@
+Data Structures - Full Course Using C and C++
+https://www.youtube.com/watch?v=B31LgI4Y4DQ
+
+
+⭐️ Course Contents ⭐️
+⌨️ (0:00:00) Introduction to data structures
+⌨️ (0:06:33) Data Structures: List as abstract data type
+⌨️ (0:19:40) Introduction to linked list
+⌨️ (0:36:50) Arrays vs Linked Lists
+⌨️ (0:49:05) Linked List - Implementation in C/C++
+⌨️ (1:03:02) Linked List in C/C++ - Inserting a node at beginning
+⌨️ (1:15:50) Linked List in C/C++ - Insert a node at nth position
+⌨️ (1:31:04) Linked List in C/C++ - Delete a node at nth position
+⌨️ (1:43:32) Reverse a linked list - Iterative method
+⌨️ (1:57:21) Print elements of a linked list in forward and reverse order using recursion
+⌨️ (2:11:43) Reverse a linked list using recursion
+⌨️ (2:20:38) Introduction to Doubly Linked List
+⌨️ (2:27:50) Doubly Linked List - Implementation in C/C++
+⌨️ (2:43:09) Introduction to stack
+⌨️ (2:51:34) Array implementation of stacks
+⌨️ (3:04:42) Linked List implementation of stacks
+⌨️ (3:15:39) Reverse a string or linked list using stack.
+⌨️ (3:32:03) Check for balanced parentheses using stack
+⌨️ (3:46:14) Infix, Prefix and Postfix
+⌨️ (3:59:14) Evaluation of Prefix and Postfix expressions using stack
+⌨️ (4:14:00) Infix to Postfix using stack
+⌨️ (4:32:17) Introduction to Queues
+⌨️ (4:41:35) Array implementation of Queue
+⌨️ (4:56:33) Linked List implementation of Queue
+⌨️ (5:10:48) Introduction to Trees
+⌨️ (5:26:37) Binary Tree
+⌨️ (5:42:51) Binary Search Tree
+⌨️ (6:02:17) Binary search tree - Implementation in C/C++
+⌨️ (6:20:52) BST implementation - memory allocation in stack and heap
+⌨️ (6:33:55) Find min and max element in a binary search tree
+⌨️ (6:39:41) Find height of a binary tree
+⌨️ (6:46:50) Binary tree traversal - breadth-first and depth-first strategies
+⌨️ (6:58:43) Binary tree: Level Order Traversal
+⌨️ (7:10:05) Binary tree traversal: Preorder, Inorder, Postorder
+⌨️ (7:24:33) Check if a binary tree is binary search tree or not
+⌨️ (7:41:01) Delete a node from Binary Search Tree
+⌨️ (7:59:27) Inorder Successor in a binary search tree
+⌨️ (8:17:23) Introduction to graphs
+⌨️ (8:34:05) Properties of Graphs
+⌨️ (8:49:19) Graph Representation part 01 - Edge List
+⌨️ (9:03:03) Graph Representation part 02 - Adjacency Matrix
+⌨️ (9:17:46) Graph Representation part 03 - Adjacency List
+
+-----------------------------------------------------------------
+
+
+
+Resources
+
+sizeOf operator: https://www.codingninjas.com/blog/2021/07/16/what-is-a-size-of-pointer-in-c/
+
+-----------------------------------------------------------------
+
+1. Introduction to Data Structures
+
+Abstract Data Types (ADTs)
+- Define data and operations but no implementation
+- Array, Linked List, Stack, Queue, Tree, Graph
+- Logical View, Operations, Cost of Operations, Implementation
+
+-----------------------------------------------------------------
+
+
+2. Data Structures: List as Abstract Data Type
+
+
+List implemented using Array
+- What is a good MAXSIZE?
+- The list can always grow to exhaust the array.
+- There is no definitive MAXSIZE; depends on usecase.
+- We must be able to handle scenarios whenever the array size is exhausted.
+- For instance, can create a new larger array and copy previous array data and free its memory.
+
+Operations and Cost
+- Access - O(1)
+- Insert - O(n) [Worst-case when insertion at first position, need to copy into new array; else O(1)]
+- Remove - O(n)
+- Append - O(n) [Worst-case when List is full, need to copy into new array; else O(1)]
+
+Issues with Arrays
+- Cannot extend memory allocated
+- Most of array space is unused and hence use of array as a dynamic list is not memory-efficient.
+-----------------------------------------------------------------
+
+
+3. Introduction to linked list
+
+
+- Non-contiguous memory locations used to store data.
+- May or may not be contiguous memory, most non-contiguous.
+
+
+Structure can be created which has two components: 
+- int Data: actual data
+- Node* next: pointer to next node
+
+- Only info we keep about a LL is the address of the first node or head node
+- This node ultimately gives access to all other nodes
+- Last node has null pointer stored in its "next" field.
+
+
+Operations and Cost
+- Access - O(n)
+- Insertion - O(n)
+- Deletion - O(n)
+
+- No unused memory as compared to situation in Arrays
+- Extra memory needed for pointer variables
+- Can create and free nodes as needed
+- No need to estimate size of data structure at start like Arrays
+-----------------------------------------------------------------
+
+4. Arrays vs Linked Lists
+
+- Access: A - Constant Time;	LL - O(n)
+- Memory Requirements:
+	A - Fixed Size;		
+		Ex. 7*4 = 28 bytes;  4 used, 3 unused. 
+		New element can be added in existing allotted memory
+		
+	LL - No unused memory;	
+	   - Extra memory for pointer variables.
+	   	Ex. Initially 3 elements, data + pointer -> 4+4 = 8 bytes
+	   	So, 8*3 = 24 bytes;
+	   	New node added -> 8*4 = 32 bytes
+
+- A: For large arrays, memory may not be available as one large block
+- LL: Might have to face fragmentation issues since we have multiple small non-contiguous blocks of memory
+
+- Inserting
+  - At the beginning - A: O(n)	LL: O(1)
+  - At the end - A: 	O(1) when array is not full; 
+  			O(n) when array is full
+ 		 L: O(n)
+- At the end - A: O(n)	LL: O(n)
+
+
+- Deleting (Same as Inserting)
+
+
+Implementing LL in C++ is tricky; might involve Segmentation Fault, Memory Leaks
+
+-----------------------------------------------------------------
+
+5. Linked List - Implementation in C/C++	[LL_Basics.cpp]
+
+
+C++			C
+struct Node {		struct Node {
+  int data;		  int data;
+  Node* link;		  struct Node* link;
+}			}
+
+
+
+Node* temp = (Node*)malloc(sizeof(Node))	// Typecasting needed since malloc returns void pointer
+Node* temp = new Node();			//  Can also use "new" keyword which is preferred over "malloc"
+
+
+
+// Dereferencing by using * or ->
+temp -> data = 2	// (*temp).data = 2;
+temp -> link = NULL	// (*temp).link = NULL;
+
+
+
+!!! A = A -> next
+This is not done as address of head node should not be modified.
+Doing this changes the original head node to the next node.
+
+
+
+-----------------------------------------------------------------
+
+
+6. Linked List in C/C++ - Inserting a node at beginning		[LL_Basics.cpp]
+
+
+https://stackoverflow.com/questions/61600147/why-use-pointer-to-struct-and-not-use-the-struct-directly-c
+
+
+3 options to use Nodes:
+- Global Node* head created so that Node does not need to be passed as function parameter.
+	Node* head;
+	main() {
+		head = NULL;
+		head = InsertNodeAtStart(head, x);
+	}
+
+- Node* head passed as function parameter without need for global declaration.
+	main() {
+		Node* head = NULL;
+		head = InsertNodeAtStart(head, x);
+	}
+	Node* InsertNodeAtStart(Node* head, int x) {
+		return head;
+	}
+
+- Node** head passed as function parameter and address of head i.e. &head passed in function call.
+	void InsertNodeAtStart(Node* head, int x);
+	main() {
+		InsertNodeAtStart(&head, x);
+	}
+
+
+-----------------------------------------------------------------
+
+
+7. Linked List in C/C++ - Insert a node at nth position
+
+Insert(data,n)	-> Node to be inserted at nth position
+
+Two edge case scenarios:
+i. LL is empty, i.e. head = NULL
+ii. n would refer to invalid position: 
+	3 nodes present currently, n = 5 is invalid.
+	Maximum possible valid position is n = 4 (3 + 1)
+	i.e. insert at end
+	
+
+General Approach:
+- Traverse till (n-1)th node
+- Link new node to next node of (n-1)th node
+- Link (n-1)th node to new node
+
+
+
+head = temp // Incorrect since temp is only new node and not actual LL
+head = temp2 // Incorrect since temp2 is traversal till (n-1)th node and does not contain links to previous nodes
+
