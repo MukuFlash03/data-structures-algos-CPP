@@ -144,6 +144,7 @@ int maxDepthC(TreeNode* root) {
         sNodes.pop();
 
         if (node != nullptr) {
+            cout << node->val << "," << currDepth << "\t";
             depth = max(depth,currDepth);
             sNodes.push({node->left,currDepth+1});
             sNodes.push({node->right,currDepth+1});
