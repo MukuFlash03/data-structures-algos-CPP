@@ -2,7 +2,7 @@
 Type: Two Pointers
 https://www.youtube.com/watch?v=-gjxg6Pln50
 
-Problem: https://leetcode.com/problems/palindromic-substrings/
+Problem: https://leetcode.com/problems/merge-sorted-array/
 Solution(s): 
 
 YouTube

@@ -4,6 +4,8 @@ https://www.youtube.com/watch?v=-gjxg6Pln50
 
 Problem: https://leetcode.com/problems/valid-palindrome-ii/
 Solution(s): 
+- https://leetcode.com/problems/valid-palindrome-ii/solutions/3307363/easy-c-solution-beat95/
+- https://leetcode.com/problems/valid-palindrome-ii/solutions/3334947/c-beats-98-90-two-pointers-very-simple-solution-o-n/
     
 YouTube
 NC - https://www.youtube.com/watch?v=JrxRYBwG6EI
@@ -20,7 +22,9 @@ A. Two-Pointer Solution
 4.  If not, remove l and r chars from current substring one at a time
         - Take care of proper indices:
         - L char removal: substr(l+1,r-(l+1)+1)
+            l+1,r
         - R char removal: substr(l,(r-1)-l+1)
+            l,r-1
 5.  Return true/false whether these two substrings are palindrome or not
 6. Update l,r = l++, r--
 5. Return true, since at this stage, palindrome guaranteed.
@@ -35,9 +39,10 @@ A. Two-Pointer Solution
 
 using namespace std;
 
-bool isPalindrome(string s) {
+// bool isPalindrome(string s) {
+bool isPalindrome(string s, int l, int r) {
     
-    int l = 0, r = s.length()-1;
+    // int l = 0, r = s.length()-1;
 
     while (l < r) {
         if (tolower(s.at(l)) != tolower(s.at(r)))
@@ -54,8 +59,10 @@ bool validPalindrome(string s) {
 
     while (l < r) {
         if (s.at(l) != s.at(r)) {
-            return isPalindrome(s.substr(l+1,r-(l+1)+1))
-                || isPalindrome(s.substr(l,(r-1)-l+1));
+            // return isPalindrome(s.substr(l+1,r-(l+1)+1))
+            //     || isPalindrome(s.substr(l,(r-1)-l+1));
+            return isPalindrome(s,l+1,r)
+                || isPalindrome(s,l,r-1);
         }
         l++;
         r--;
@@ -65,8 +72,8 @@ bool validPalindrome(string s) {
 
 
 int main() {
-    string s = "aba";
-    // string s = "abca";
+    // string s = "aba";
+    string s = "abca";
     // string s = "abc";
     cout << validPalindrome(s) << '\n';
     return 0;

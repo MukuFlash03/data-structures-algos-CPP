@@ -11,11 +11,11 @@ https://www.byte-by-byte.com/coding-interview-101/
 
 Type: Precomputation (Pre-Postfix)
 
-Problem: https://leetcode.com/problems/longest-substring-without-repeating-characters/
+Problem: https://leetcode.com/problems/product-of-array-except-self/
 Solution(s): 
 
 YouTube
-NC - https://www.youtube.com/watch?v=jSto0O4AJbM
+NC - https://www.youtube.com/watch?v=bNvIQI2wAjk
 
 
 A. Sliding Window (Optimal)

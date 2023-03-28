@@ -10,7 +10,7 @@ Problem: https://leetcode.com/problems/longest-substring-without-repeating-chara
 Solution(s): 
 
 YouTube
-NC - https://www.youtube.com/watch?v=jSto0O4AJbM
+NC - https://www.youtube.com/watch?v=wiGpQwVHdE0
 
 
 A. Sliding Window (Optimal)

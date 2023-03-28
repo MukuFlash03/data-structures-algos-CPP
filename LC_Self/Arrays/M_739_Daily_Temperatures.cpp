@@ -5,8 +5,9 @@ Solution(s):
 https://leetcode.com/problems/daily-temperatures/discuss/1574806/C%2B%2B-EASY-standard-sol-oror-INTUITIVE-approach-with-DRY-RUN-oror-STACK-appraoch
 https://leetcode.com/problems/daily-temperatures/discuss/1574808/C%2B%2BPython-3-Simple-Solutions-w-Explanation-Examples-and-Images-or-2-Monotonic-Stack-Approaches
 https://leetcode.com/problems/daily-temperatures/discuss/2701164/C%2B%2B-5-Ways-to-solve-oror-Logic-%2B-Code
+
 YouTube
-Neetcode - https://www.youtube.com/watch?v=cTBiBSnjO3c
+NC - https://www.youtube.com/watch?v=cTBiBSnjO3c
 Nice visual explanation - https://www.youtube.com/watch?v=WGm4Kj3lhRI
 */
 
