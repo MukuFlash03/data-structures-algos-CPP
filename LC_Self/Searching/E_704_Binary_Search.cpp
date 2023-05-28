@@ -3,8 +3,6 @@ Type: Searching Array
 Problem: https://leetcode.com/problems/binary-search/
 Solution(s): 
 
-YouTube
-NC - 
 */
 
 
