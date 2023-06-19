@@ -21,7 +21,10 @@ Check comments.
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<stack>
+#include<vector>
+#include<map>
+
 
 using namespace std;
 
@@ -36,7 +39,7 @@ map<char, char> create_map() {
     return letMap;
 }
 
-map<char, char> braces = create_map();
+// map<char, char> braces = create_map();
 
 bool isValid(string s) {
 

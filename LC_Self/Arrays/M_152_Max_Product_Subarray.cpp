@@ -1,7 +1,7 @@
 /*
 
 
-Problem: https://leetcode.com/problems/maximum-product-subarray/solutions/
+Problem: https://leetcode.com/problems/maximum-product-subarray/
 Solution(s): 
 https://leetcode.com/problems/maximum-product-subarray/solutions/1608862/java-3-solutions-detailed-explanation-using-image/
 https://leetcode.com/problems/maximum-product-subarray/solutions/183483/java-c-python-it-can-be-more-simple/
@@ -36,7 +36,7 @@ Now for next elements, they will be multiplied with 1 and entire product will no
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 

@@ -2,7 +2,7 @@
 
 Construct BT: https://www.linkedin.com/pulse/create-binary-tree-from-array-suhasis-saha/
 
-Problem: https://leetcode.com/problems/same-tree/submissions/922100944/
+Problem: https://leetcode.com/problems/same-tree/
 Solution(s): 
 
 YouTube
@@ -26,7 +26,7 @@ A. Recursive Depth-first search
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 

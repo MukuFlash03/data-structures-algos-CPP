@@ -40,7 +40,7 @@ Assuming that mid is in right sorted subarray and we know we are in right sorted
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 

@@ -29,7 +29,7 @@ A. Sliding Window (Optimal)
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<set>
 
 using namespace std;
 

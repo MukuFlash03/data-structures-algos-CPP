@@ -6,11 +6,8 @@ Type: Linked List, Two Pointers, Floyd's Algo
 //2 -> Node* head passed as function parameter
 //3 -> Node** head passed as function parameter, i.e. pointer to Node
 
-Problem: https://leetcode.com/problems/linked-list-cycle/
+Problem: https://leetcode.com/problems/middle-of-the-linked-list/description/
 Solution(s): 
-
-YouTube
-NC - https://www.youtube.com/watch?v=gBTe7lFR3vc
 
 */
 
@@ -26,12 +23,6 @@ A. Optimal Approach
     - Slow increments by 1; Fast increments by 2
     - If slow matches fast, return true
 - Return false if control reaches outside loop
-
-B. HashSet Approach
-
-- Use a hashset of Nodes
-- If same node is already in hashset, return true as cycle exists.
-- Else return false.
 
 
 */
@@ -81,52 +72,26 @@ void printList(ListNode* head) {
     cout << '\n';
 }
 
-void addCycle(ListNode** head, int pos) {
-    ListNode* temp = *head;
-    ListNode* ptr;
-    ListNode* last;
-
-    if (pos == -1)
-        return;
-
-    int count = 0;
-    while (temp != NULL) {
-        if (count == pos)
-            ptr = temp;
-        if (temp->next == NULL) {
-            temp->next = ptr;
-            break;
-        }
-        temp = temp->next;
-        count++;
-    }
-}
-
-bool hasCycle(ListNode* head) {
+ListNode* middleNode(ListNode* head) {
     ListNode* slow = head;
     ListNode* fast = head;
 
     while (fast != NULL && fast->next != NULL) {
         slow = slow->next;
         fast = fast->next->next;
-        if (slow == fast)
-            return true;
     }
-    return false;
+    return slow;
 }
 
 int main() {
 
-    vector<int> nums = {3,2,0,-4};  int pos = 1;
-    // vector<int> nums = {1,2};  int pos = 0;
-    // vector<int> nums = {1};  int pos = -1;
+    // vector<int> nums = {1,2,3,4,5};
+    vector<int> nums = {1,2,3,4,5,6};
 
     ListNode* head = createLL(nums);
-    addCycle(&head,pos);
-    // printList(head);
+    ListNode* middle = middleNode(head);
     
-    bool flag = hasCycle(head);
-    cout << flag << "\n";
+    cout << middle->val << "\n";
 
     return 0;
 }

@@ -6,7 +6,7 @@ Problem: https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search
 Solution(s): 
 
 YouTube
-https://www.youtube.com/watch?v=gs2LMfuOR9k
+NC - https://www.youtube.com/watch?v=gs2LMfuOR9k
 */
 
 
@@ -32,7 +32,6 @@ Time Complexity = O(logn) = Height of tree
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
 
 using namespace std;
 

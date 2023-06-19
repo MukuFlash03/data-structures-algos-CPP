@@ -12,7 +12,8 @@ NC - https://www.youtube.com/watch?v=j4KwhBziOpg
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
+#include<map>
 
 using namespace std;
 

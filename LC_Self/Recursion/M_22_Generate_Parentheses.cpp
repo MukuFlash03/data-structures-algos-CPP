@@ -28,7 +28,7 @@ Tracking variables: open, close
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 

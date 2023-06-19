@@ -48,7 +48,7 @@ its negativity will increase with each new element.
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 
@@ -74,6 +74,7 @@ int main() {
     vector<int> nums = {-2,1,-3,4,-1,2,1,-5,4};
     // vector<int> nums = {5,4,-1,7,8};
     // vector<int> nums = {1};
+    // vector<int> nums = {-4,-5,-3};
     
     int maxSum = maxSubArray(nums);
     cout << maxSum << "\n";

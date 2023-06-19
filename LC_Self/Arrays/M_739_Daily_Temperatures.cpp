@@ -34,13 +34,14 @@ We'll use a stack, why?
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
+#include<stack>
 
 using namespace std;
 
 /*
-std::vector<int> dailyTemperatures(std::vector<int>& temperatures) {
-    std::vector<int> answer(temperatures.size(), 0);
+vector<int> dailyTemperatures(vector<int>& temperatures) {
+    vector<int> answer(temperatures.size(), 0);
     int left = 0, right = 1;
     for (; left < temperatures.size(); left++) {
     //  for (; right > left; right--) {
@@ -62,7 +63,7 @@ vector<int> dailyTemperaturesFront(std::vector<int>& temperatures) {
     for(int i = 0; i < temperatures.size(); i++) {
         int currTemp = temperatures[i];
             
-        while (!temp.empty() && currTemp >= temp.top().second) {
+        while (!temp.empty() && currTemp > temp.top().second) {
             answer[temp.top().first] = i - temp.top().first;
             temp.pop();
         }
@@ -96,30 +97,33 @@ vector<int> dailyTemperaturesEnd(std::vector<int>& temperatures) {
 
 
 int main() {
-    vector<int> nums = {73,74,75,71,69,72,76,73};
+    // vector<int> nums = {73,74,75,71,69,72,76,73};
     // vector<int> nums = {30,40,50,60};
     // vector<int> nums = {30,60,90};
+    vector<int> nums = {89,62,70,58,47,47,46,76,100,70};
     vector<int> answerFront = dailyTemperaturesFront(nums);
     vector<int> answerEnd = dailyTemperaturesEnd(nums);
 
+    cout << "Front: \n";
     for(auto it = answerFront.begin(); it != answerFront.end(); it++)
         cout << *it << " ";
     cout << "\n\n";
 
+     cout << "End: \n";
     for(auto it = answerEnd.begin(); it != answerEnd.end(); it++)
         cout << *it << " ";
     cout << '\n';
 
     /*
-    std::vector<std::pair<int, int>> test = {std::make_pair(1,1), std::make_pair(2,2)};
-    // std::vector<std::pair<int, int>>::iterator it;
+    vector<pair<int, int>> test = {make_pair(1,1), make_pair(2,2)};
+    // vector<pair<int, int>>::iterator it;
     for (auto it = test.begin(); it != test.end(); it++)
-            std::cout << it->first << ", " << it->second << '\t';
-    std::cout << '\n';
+            cout << it->first << ", " << it->second << '\t';
+    cout << '\n';
 
-    for (const std::pair<int,int> &elem : test)
-        std::cout << elem.first << ", " << elem.second << '\t';
-    std::cout << '\n';
+    for (const pair<int,int> &elem : test)
+        cout << elem.first << ", " << elem.second << '\t';
+    cout << '\n';
     */
 
 }

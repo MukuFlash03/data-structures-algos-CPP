@@ -37,7 +37,7 @@ B. Two-Pointer Solution (Int to String conversion)
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 
@@ -56,6 +56,9 @@ bool isPalindrome(int x) {
     long tenPower = 1;
     while (x > tenPower*10)
         tenPower *= 10;
+
+    cout << x << '\n';
+    cout << tenPower << '\n';
 
     while (num > 0) {
         first = num / tenPower;

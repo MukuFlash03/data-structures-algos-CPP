@@ -35,7 +35,7 @@ B. Frequency Mapping
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<map>
 
 using namespace std;
 
@@ -62,8 +62,8 @@ bool isAnagram(string s, string t) {
 
 
 int main() {
-    // string s = "anagram", t = "nagaram";
-    string s = "rat", t = "car";
+    string s = "anagram", t = "nagaram";
+    // string s = "rat", t = "car";
     cout << isAnagram(s,t) << '\n';
     return 0;
 }

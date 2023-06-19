@@ -29,10 +29,16 @@ A. Sliding Window (Optimal)
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 
+void printResult(vector<int> &result) {
+    cout << "Result:" << endl;
+    for (const int &elem : result) 
+        cout << elem << "\t";
+    cout << endl;
+}
 
 vector<int> productExceptSelf(vector<int>& nums) {
 
@@ -43,11 +49,15 @@ vector<int> productExceptSelf(vector<int>& nums) {
         result[i] = pre;
         pre *= nums[i];
     }
+
+    printResult(result);
     
     for (int i = nums.size()-1; i >= 0; i--) {
         result[i] *= post;
         post *= nums[i];
     }
+
+    printResult(result);
 
     return result;
 }
@@ -59,11 +69,7 @@ int main() {
     // vector<int> nums = {-1,1,0,-3,3};
     
     vector<int> prodArr = productExceptSelf(nums);
-
-    cout << "Product Array:" << endl;
-    for (const int &elem : prodArr) 
-        cout << elem << "\t";
-    cout << endl;
+    // printResult(prodArr);
 
     return 0;
 }

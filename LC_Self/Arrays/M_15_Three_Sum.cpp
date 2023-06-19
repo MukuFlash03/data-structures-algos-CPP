@@ -23,7 +23,7 @@ A. Optimal Solution
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 
@@ -43,8 +43,6 @@ vector<vector<int>> threeSum(vector<int>& nums) {
 
     for (int i = 0; i < nums.size(); i++) {
 
-        if (nums[i] > 0)
-            break;
 
         if ( (i > 0) && (nums[i] == nums[i-1]) )
             continue;

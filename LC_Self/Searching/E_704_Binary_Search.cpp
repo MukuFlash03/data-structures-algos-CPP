@@ -3,8 +3,6 @@ Type: Searching Array
 Problem: https://leetcode.com/problems/binary-search/
 Solution(s): 
 
-YouTube
-NC - 
 */
 
 
@@ -25,7 +23,7 @@ A. Optimal Solution
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 

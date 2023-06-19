@@ -39,7 +39,7 @@ all other elements after L in current sub array range will be greater than resul
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 

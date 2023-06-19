@@ -28,7 +28,7 @@ Also, increment R value to one element ahead of latest updated L position.
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 

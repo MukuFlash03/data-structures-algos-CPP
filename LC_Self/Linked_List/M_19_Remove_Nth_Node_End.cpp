@@ -29,7 +29,7 @@ A. Optimal Approach
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 
@@ -84,8 +84,8 @@ ListNode* removeNthFromEnd(ListNode** head, int n) {
     while (n--)
         fast = fast->next;
 
-    while (fast == NULL)
-        return (*head)->next;
+    // while (fast == NULL)
+    //     return (*head)->next;
 
     while (fast != NULL) {
         slow = slow->next;

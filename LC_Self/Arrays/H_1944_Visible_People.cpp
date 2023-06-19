@@ -30,15 +30,16 @@ We'll use a stack, why?
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
+#include<stack>
 
 using namespace std;
 
 // Iteration from the end
-std::vector<int> canSeePersonsCount(std::vector<int>& heights) {
+vector<int> canSeePersonsCount(vector<int>& heights) {
     
-    std::stack<int> temp;
-    std::vector<int> answer(heights.size(), 0);
+    stack<int> temp;
+    vector<int> answer(heights.size(), 0);
 
     int visiblePeople = 0;
 
@@ -64,25 +65,25 @@ std::vector<int> canSeePersonsCount(std::vector<int>& heights) {
 
 
 int main() {
-    std::vector<int> nums = {10,6,8,5,11,9};
-    // std::vector<int> nums = {5,1,2,3,10};
-    // std::vector<int> nums = {30,60,90};
-    std::vector<int> answer = canSeePersonsCount(nums);
+    vector<int> nums = {10,6,8,5,11,9};
+    // vector<int> nums = {5,1,2,3,10};
+    // vector<int> nums = {30,60,90};
+    vector<int> answer = canSeePersonsCount(nums);
 
     for(auto it = answer.begin(); it != answer.end(); it++)
-        std::cout << *it << " ";
-    std::cout << "\n\n";
+        cout << *it << " ";
+    cout << "\n\n";
 
     /*
-    std::vector<std::pair<int, int>> test = {std::make_pair(1,1), std::make_pair(2,2)};
-    // std::vector<std::pair<int, int>>::iterator it;
+    vector<pair<int, int>> test = {make_pair(1,1), make_pair(2,2)};
+    // vector<pair<int, int>>::iterator it;
     for (auto it = test.begin(); it != test.end(); it++)
-            std::cout << it->first << ", " << it->second << '\t';
-    std::cout << '\n';
+            cout << it->first << ", " << it->second << '\t';
+    cout << '\n';
 
-    for ( const std::pair<int,int> &elem : test )
-        std::cout << elem.first << ", " << elem.second << '\t';
-    std::cout << '\n';
+    for ( const pair<int,int> &elem : test )
+        cout << elem.first << ", " << elem.second << '\t';
+    cout << '\n';
     */
 
 }

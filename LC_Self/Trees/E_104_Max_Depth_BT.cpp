@@ -42,7 +42,9 @@ C. Iterative Depth-first search
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<queue>
+#include<vector>
+#include<stack>
 
 using namespace std;
 
@@ -113,7 +115,6 @@ int maxDepthB(TreeNode* root) {
     int depth = 0;
 
     while (!qNodes.empty()) {
-        // for (int i = 0; i < qNodes.size(); i++) {
         int len = qNodes.size();
         while (len--) {
             TreeNode* node = qNodes.front();
@@ -135,7 +136,7 @@ int maxDepthC(TreeNode* root) {
         return 0;
     
     stack<pair<TreeNode*,int>> sNodes;
-    sNodes.push({root,1});
+    sNodes.push({root,0});
     int depth = 0, currDepth = 0;
 
     while (!sNodes.empty()) {
@@ -144,16 +145,41 @@ int maxDepthC(TreeNode* root) {
         currDepth = sNodes.top().second;
         sNodes.pop();
 
-        if (node != nullptr) {
-            cout << node->val << "," << currDepth << "\t";
-            depth = max(depth,currDepth);
-            // sNodes.push({node->left,currDepth+1});
+        depth = max(depth,currDepth);
+        
+        cout << node->val << "," << depth << "\t";
+        if (node->right != nullptr)
             sNodes.push({node->right,currDepth+1});
+        if (node->left != nullptr)
             sNodes.push({node->left,currDepth+1});
-        }
     }
-    return depth;
+    return ++depth;
 } 
+
+// int maxDepthC(TreeNode* root) {
+    //     if (root == nullptr)
+    //         return 0;
+    
+    // stack<pair<TreeNode*,int>> sNodes;
+    // sNodes.push({root,1});
+    // int depth = 0, currDepth = 0;
+
+    // while (!sNodes.empty()) {
+        
+    //     TreeNode* node = sNodes.top().first;
+    //     currDepth = sNodes.top().second;
+    //     sNodes.pop();
+
+    //     depth = max(depth,currDepth);
+    //     if (node->left != nullptr)
+    //         sNodes.push({node->left,currDepth+1});
+    //     if (node->right != nullptr)
+    //         sNodes.push({node->right,currDepth+1});
+    //     if (node->left != nullptr)
+    //         sNodes.push({node->left,currDepth+1});
+    // }
+    // return depth;
+// } 
 
 
 int main() {

@@ -51,7 +51,7 @@ We have to sort the input array and its time complexity O(nlogn) is insignifican
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 

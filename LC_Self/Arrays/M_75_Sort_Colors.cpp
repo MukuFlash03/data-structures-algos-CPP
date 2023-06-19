@@ -39,18 +39,18 @@ While i <= R
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 
 
-void swap(std::vector<int>& nums, int x, int y) {
+void swap(vector<int>& nums, int x, int y) {
     int temp = nums[x];
     nums[x] = nums[y];
     nums[y] = temp;
 }
 
-void sortColors(std::vector<int>& nums) {
+void sortColors(vector<int>& nums) {
 
     int i = 0, l = 0, r = nums.size() - 1;
 
@@ -70,13 +70,13 @@ void sortColors(std::vector<int>& nums) {
 
 
 int main() {
-    std::vector<int> nums = {2,0,1,0,2,1};
+    vector<int> nums = {2,0,1,0,2,1};
     
     sortColors(nums);
 
     for ( const int &elem : nums )
-        std::cout << elem << '\t';
-    std::cout << '\n';
+        cout << elem << '\t';
+    cout << '\n';
 
     return 0;
 }

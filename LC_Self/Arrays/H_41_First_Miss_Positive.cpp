@@ -56,15 +56,16 @@ In Map implementation: Step 7 is needed since map size = nums.size();
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include <bits/stdc++.h>
+#include<vector>
+#include<map>
 
 using namespace std;
 
-int firstMissingPositive(std::vector<int>& nums) {
+int firstMissingPositive(vector<int>& nums) {
     
     /* Soln 1 */
     /*     
-    std::map<int, int> freqMap;
+    map<int, int> freqMap;
     for(auto it: nums) {
         if (it < 1 || it > nums.size())
             continue;
@@ -86,7 +87,7 @@ int firstMissingPositive(std::vector<int>& nums) {
     /*
     int miss = 1;
     sort(nums.begin(),nums.end());
-    for (std::vector<int>::iterator it = nums.begin(); it != nums.end(); it++) {
+    for (vector<int>::iterator it = nums.begin(); it != nums.end(); it++) {
         if (*it < 1) continue;
         else {
                 if (*it == miss)
@@ -101,9 +102,9 @@ int firstMissingPositive(std::vector<int>& nums) {
     /* Soln 3 */
     // /*
     int len = nums.size();
-    std::vector<int> arr(len+1,0);
+    vector<int> arr(len+1,0);
 
-    for (std::vector<int>::iterator it = nums.begin(); it != nums.end(); it++) {
+    for (vector<int>::iterator it = nums.begin(); it != nums.end(); it++) {
        if (*it < 1 || *it > nums.size())  
         continue;
        arr[*it] = -1;
@@ -119,7 +120,7 @@ int firstMissingPositive(std::vector<int>& nums) {
 }
 
 int main() {
-    // std::vector<int> nums = {2, -5, 4, 3, 0, 7, 8, -10};
-    std::vector<int> nums = {1,2,3,4,5};
-    std::cout << firstMissingPositive(nums) << std::endl;
+    // vector<int> nums = {2, -5, 4, 3, 0, 7, 8, -10};
+    vector<int> nums = {1,2,3,4,5};
+    cout << firstMissingPositive(nums) << endl;
 }

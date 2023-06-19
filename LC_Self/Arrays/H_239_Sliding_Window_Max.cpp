@@ -38,7 +38,8 @@ Using a queue so that elements can be added/removed from the front as well as th
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
+#include<deque>
 
 using namespace std;
 

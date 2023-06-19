@@ -28,7 +28,7 @@ We are looking for inclines or rises and not declines or falls.
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 
@@ -41,13 +41,13 @@ int maxProfit(vector<int>& prices) {
 }
 
 int main() {
-    std::vector<int> nums = {7,1,5,3,6,4};
-    // std::vector<int> nums = {7,6,4,3,1};
-    // std::vector<int> nums = {1,2,3,4,5};
+    vector<int> nums = {7,1,5,3,6,4};
+    // vector<int> nums = {7,6,4,3,1};
+    // vector<int> nums = {1,2,3,4,5};
     
 
     int profit = maxProfit(nums);
-    std::cout << profit << '\n';
+    cout << profit << '\n';
 
     return 0;
 }

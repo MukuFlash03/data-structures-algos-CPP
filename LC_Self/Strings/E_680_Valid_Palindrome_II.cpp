@@ -35,7 +35,6 @@ A. Two-Pointer Solution
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
 
 using namespace std;
 

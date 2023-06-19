@@ -3,6 +3,7 @@ Type: Linked List, Two Pointers, Floyd's Algo
 
 Problem: https://leetcode.com/problems/find-the-duplicate-number/
 Solution(s): 
+- https://tutorialcup.com/interview/array/find-the-duplicate-number.htm
 
 YouTube
 NC - https://www.youtube.com/watch?v=wjYnzkAhcNk
@@ -11,7 +12,7 @@ NC - https://www.youtube.com/watch?v=wjYnzkAhcNk
 
 /*
 
-A. Optimal Solution
+A. Optimal Solution (Cycle Detection using Floyd's Algo)
 
 - Instead of thinking of input as values, consider them to be pointers
     - Each value points to their respective face value's index in the array
@@ -34,7 +35,7 @@ A. Optimal Solution
     - B = Intersection point of 1st Slow and 2nd Slow pointer
         - This refers to start of cycle point.
     - Distance from A to B = Distance from origin to B.
-    - B is answer to  be returned, i.e. duplicate element.
+    - B is answer to be returned, i.e. duplicate element.
 
 
 - Why are these two distances the same?
@@ -65,8 +66,18 @@ A. Optimal Solution
 
 B. HashSet Approach
 
-- But cannot modify array -> no sorting allowed.
-- Must use constant extra space
+- Use a HashSet to store visited elements.
+- LC Problem requirement: Must use constant extra space
+
+
+C. XOR Operation
+
+- X = XOR of all elements in array
+- Y = XOR of all elements from 1 to n
+- Z = X XOR Y = Duplicate element
+
+- Fails for input = [2,2,2,2,2]
+- XOR logic works if input array has numbers from 1 to n present.
 
 
 */
@@ -74,7 +85,7 @@ B. HashSet Approach
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 
@@ -98,6 +109,15 @@ int findDuplicate(vector<int>& nums) {
     return slow;
 }
 
+int findDuplicateXOR(vector<int>& nums) {
+    int x = 0, y = 0;
+    for (int i = 0; i < nums.size(); i++) {
+        x ^= nums[i];
+        y ^= i;
+    }
+    return x ^ y;
+}
+
 int main() {
 
     vector<int> nums = {1,3,4,2,2};
@@ -105,6 +125,9 @@ int main() {
 
     int elem = findDuplicate(nums);
     cout << elem << '\n';
+
+    int elemXOR = findDuplicateXOR(nums);
+    cout << elemXOR << '\n';
 
     return 0;
 }

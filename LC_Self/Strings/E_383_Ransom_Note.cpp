@@ -24,7 +24,7 @@ A. Frequency Mapping
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<map>
 
 using namespace std;
 
@@ -51,9 +51,9 @@ bool canConstruct(string ransomNote, string magazine) {
 
 
 int main() {
-    string ransomNote = "a", magazine = "b";
+    // string ransomNote = "a", magazine = "b";
     // string ransomNote = "aa", magazine = "ab";
-    // string ransomNote = "aa", magazine = "aab";
+    string ransomNote = "aa", magazine = "aab";
     cout << canConstruct(ransomNote,magazine) << '\n';
     return 0;
 }

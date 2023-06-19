@@ -30,7 +30,7 @@ Used a list since it has same iterator find() like a hashmap.
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 
@@ -42,6 +42,7 @@ vector<int> twoSum(vector<int>& nums, int target) {
     for (int i = 0; i < nums.size(); i++) {
         diff = target - nums[i];
         it = find(nums.begin()+(i+1), nums.end(), diff);
+        cout << i << "\n";
         if (it != nums.end()) {
             ts.push_back(i);
             ts.push_back(it - nums.begin());
@@ -53,14 +54,14 @@ vector<int> twoSum(vector<int>& nums, int target) {
 
 int main() {
 
-    vector<int> nums = {2,7,11,15};
-    int target = 9;
+    // vector<int> nums = {2,7,11,15};
+    // int target = 9;
 
     // vector<int> nums = {3,2,4};
     // int target = 6;
 
-    // vector<int> nums = {3,3};
-    // int target = 6;
+    vector<int> nums = {3,3};
+    int target = 6;
 
     vector<int> indices2 = twoSum(nums, target);
 

@@ -33,7 +33,7 @@ Time Complexity: O(n)
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
-#include<bits/stdc++.h>
+#include<vector>
 
 using namespace std;
 
@@ -97,7 +97,7 @@ pair<bool,int> maxDepth(TreeNode* node) {
     pair<bool,int> right = maxDepth(node->right);
 
     pair<bool,int> result;
-    result.first = (abs(left.second - right.second) <= 1) && left.first && right.first;
+    result.first = left.first && right.first && (abs(left.second - right.second) <= 1);
     result.second = 1 + max(left.second, right.second);
 
     return result;
