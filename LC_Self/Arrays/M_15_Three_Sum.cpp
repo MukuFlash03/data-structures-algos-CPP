@@ -60,7 +60,7 @@ vector<vector<int>> threeSum(vector<int>& nums) {
             else {
                 result.push_back({nums[i], nums[l], nums[r]});
                 l++;
-                while ( (nums[l] == nums[l-1]) && (l < r) )
+                while ( (l < r) && (nums[l] == nums[l-1]) )
                     l++;
             }
         }

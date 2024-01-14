@@ -12,6 +12,7 @@ NC - https://www.youtube.com/watch?v=3OamzN90kPg
 A. Optimal Solution (HashSet, One Pass)
 Time: O(n)  Space: O(n)
 
+0. If list size = 0 or 1, Return false.
 1. Iterate through list.
 2.  If ith element in HashSet
         Return true

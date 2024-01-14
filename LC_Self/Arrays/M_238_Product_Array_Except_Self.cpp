@@ -20,9 +20,14 @@ NC - https://www.youtube.com/watch?v=bNvIQI2wAjk
 
 A. Sliding Window (Optimal)
 
-1. First, calculate product going from L to R and update values for indices starting from 1 to n-1 in result[]
+1. First, calculate product going from L to R and update values for indices starting from 1 (0?) to n-1 in result[]
 2. Next, calculate product going from R to L using updated result[] values from step 1 for indices 
 3. Pre and Post initial values are 1. Previous First and Last element assumed to be 1 while calculating product
+
+Note: Vector initialization
+- Since vector is accessed by index, it is necessary to initialize it with size.
+- If size is not known, use push_back() to add elements to vector.
+- In this case, if we want to declare vector without size initialization, we can use push_back() to add elements to vector.
 
 */
 

@@ -18,9 +18,11 @@ Compute area and update max area
 
 2. Optimal solution
 - L = 0, R = n-1 -> since we want to maximize area, choosing max width (separation between L,R)
-- Updating pointers: Shift the min ptr value
-                        since we want to maximize area, we will not move max ptr
-                    If both ptr values equal, can shift either one (condense if-else)
+- Length = l - r
+- Find minimum height between l and r
+- Area = length * min height
+- Update max area
+- Shift the pointer with the minimum height
 
 
 */
@@ -52,8 +54,8 @@ int maxArea(vector<int>& height) {
 
 
 int main() {
-    std::vector<int> nums = {1,8,6,2,5,4,8,3,7};
-    // std::vector<int> nums = {1,1};
+    vector<int> nums = {1,8,6,2,5,4,8,3,7};
+    // vector<int> nums = {1,1};
 
     int answer = maxArea(nums);
     cout << answer << '\n';

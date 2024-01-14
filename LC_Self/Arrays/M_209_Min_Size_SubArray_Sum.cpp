@@ -33,9 +33,7 @@ using namespace std;
 
 
 int minSubArrayLen(int target, vector<int>& nums) {
-
     int minLen = INT_MAX;
-
     int currSum = 0;
     int start = 0, end = 0;
 
@@ -58,14 +56,18 @@ int minSubArrayLen(int target, vector<int>& nums) {
 }
 
 
-int main() {
-    // vector<int> nums = {1,2,3,4,5,6};
+int main() {    
     vector<int> nums = {2,3,1,2,4,3};
+    int target = 7;
+
     // vector<int> nums = {1,4,4};
+    // int target = 4;
+
     // vector<int> nums = {1,1,1,1,1,1,1,1};
+    // int target = 11;
 
 
-    int minLen = minSubArrayLen(7, nums);
+    int minLen = minSubArrayLen(, nums);
     cout << "Min. length sum subarray = " << minLen << endl;
 
     return 0;

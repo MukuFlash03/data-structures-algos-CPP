@@ -15,11 +15,10 @@ NC - https://www.youtube.com/watch?v=cQ1Oz4ckceM
 
 A. Optimal Solution 
 
-Eliminating elements from the right end
-- Can "continue" loop once sum > target 
-- As array is sorted, any number after 1st element which gives sum > target 
-will increase sum and exceed target.
-E.g. 1+10 > 9 -> skip 11 ;    3+7 > 9 -> skip 10,11;
+Eliminating elements from the right/left end
+- Can "continue" loop if sum >/< target 
+- As array is sorted, any number after 1st element which gives sum >/< target 
+will increase/decrease sum and exceed/fall short of target.
 
 1. Iterate through the list with L = 0 and R = n-1
 2. If sum > target, R--

@@ -60,15 +60,14 @@ vector<int> dailyTemperaturesFront(std::vector<int>& temperatures) {
     stack<pair<int, int>> temp;
     vector<int> answer(temperatures.size(), 0);
 
-    for(int i = 0; i < temperatures.size(); i++) {
-        int currTemp = temperatures[i];
-            
-        while (!temp.empty() && currTemp > temp.top().second) {
+    for (int i = 0; i < temperatures.size(); i++) {
+        while (!temp.empty() && temperatures[i] > temp.top().second) {
             answer[temp.top().first] = i - temp.top().first;
             temp.pop();
         }
-        temp.push({i, currTemp});   
+        temp.push({i, temperatures[i]});
     }
+
     return answer;
 }
 

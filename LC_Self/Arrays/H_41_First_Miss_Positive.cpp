@@ -50,6 +50,15 @@ Hence answer = i++ or nums.size() + 1
 In Vector implementation: Earlier Step 7 case is already covered in iteration since vector length = nums.size() + 1
 In Map implementation: Step 7 is needed since map size = nums.size(); 
                        in case "sorted all present" scenario occurs, then i++ will give correct answer as nums.size() + 1
+
+Soln 4: 
+- https://www.geeksforgeeks.org/find-the-mex-of-given-array/
+1. Sort input nums
+2. Initialize mex = 1
+3. Iterate through input nums
+4.  If ith element == mex => mex++
+5. Return mex
+
 */
 
 
@@ -117,6 +126,17 @@ int firstMissingPositive(vector<int>& nums) {
 
     return len + 1;
     // */
+
+    /*
+    Soln 4:
+        sort(nums.begin(), nums.end());
+ 
+        int mex = 1;
+        for (int i = 0; i < nums.size(); i++)
+            if (nums[i] == mex)
+                mex += 1;
+        return mex;
+    */
 }
 
 int main() {

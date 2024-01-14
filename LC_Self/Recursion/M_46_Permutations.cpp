@@ -38,7 +38,7 @@ vector<vector<int>> result;
 
 void recurPermute(int idx, vector<int>& nums) {
 
-    if (idx == nums.size()) {
+    if (nums.size() == idx) {
         result.push_back(nums);
         return;
     }
