@@ -1,10 +1,13 @@
 /*
 Type: Monotonic Decreasing Stack ; Next Greater Element
-Problem: https://leetcode.com/problems/next-greater-element-i
+Problem: https://leetcode.com/problems/final-prices-with-a-special-discount-in-a-shop/
 Solution(s): 
+- https://www.geeksforgeeks.org/find-the-nearest-smaller-numbers-on-left-side-in-an-array/
+- https://medium.com/algorithms-digest/previous-smaller-element-e3996fb8be3c
+- https://www.techiedelight.com/previous-smaller-element/
 
 YouTube
-NC - https://www.youtube.com/watch?v=68a1Dc_qVq4
+NC - 
 */
 
 
@@ -31,32 +34,31 @@ NC - https://www.youtube.com/watch?v=68a1Dc_qVq4
 
 using namespace std;
 
-vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) {
-    map<int, int> indices;
-    stack<int> temp;
-    vector<int> answer(nums1.size(), -1);
-
-    for (int i = 0; i < nums1.size(); i++) 
-        indices[nums1[i]] = i;
-
-    for (int i = 0; i < nums2.size(); i++) {
-        while (!temp.empty() && nums2[i] > temp.top()) {
-            answer[indices[temp.top()]] = nums2[i];
+vector<int> finalPrices(vector<int>& prices) {
+    vector<int> discounts(prices.size(), 0);
+    vector<int> finalDiscountedPrices(prices.size(), 0);
+    stack<pair<int, int>> temp;
+    
+    for (int i = 0; i < prices.size(); i++) {
+        while (!temp.empty() && prices[i] <= temp.top().second) {
+            discounts[temp.top().first] = prices[i];
             temp.pop();
         }
+        temp.push({i, prices[i]});
+    }
 
-        if (indices.find(nums2[i]) != indices.end())
-            temp.push(nums2[i]);
-    }    
-
-    return answer;
+    for (int i = 0; i < prices.size(); i++) {
+        finalDiscountedPrices[i] = prices[i] - discounts[i];
+    }
+    return finalDiscountedPrices;
 }
 
 int main() {
-    vector<int> nums1 = {4,1,2}, nums2 = {1,3,4,2};
-    // vector<int> nums1 = {2,4}, nums2 = {1,2,3,4};
+    vector<int> nums = {8,4,6,2,3};
+    // vector<int> nums = {1,2,3,4,5};
+    // vector<int> nums = {10,1,1,6};
 
-    vector<int> answer = nextGreaterElement(nums1, nums2);
+    vector<int> answer = finalPrices(nums);
 
     for (const auto& elem : answer)
         cout << elem << "\t";

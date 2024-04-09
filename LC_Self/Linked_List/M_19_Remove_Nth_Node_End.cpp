@@ -30,56 +30,17 @@ A. Optimal Approach
 #include<stdio.h>
 #include<iostream>
 #include<vector>
+#include "CustomLL.h"
 
 using namespace std;
 
-
-struct ListNode {
-    int val;
-    ListNode* next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
-
-void insertNode(ListNode** head, int item)
-{
-	ListNode* temp = new ListNode(item);
-	ListNode* ptr;
-
-	if (*head == NULL)
-		*head = temp;
-	else {
-		ptr = *head;
-		while (ptr->next != NULL)
-			ptr = ptr->next;
-		ptr->next = temp;
-	}
-}
-
-ListNode* createLL(vector<int> nums) {
-    ListNode* head = NULL;
-	for (const auto& elem : nums)
-		insertNode(&head, elem);
-    return head;
-}
-
-void printList(ListNode* head) {
-    ListNode* temp = head;
-    while (temp != NULL) {
-        cout << temp->val << "\t";
-        temp = temp->next;
-    }
-    cout << '\n';
-}
-
-ListNode* removeNthFromEnd(ListNode** head, int n) {
+CustomLL::ListNode* removeNthFromEnd(CustomLL::ListNode** head, int n) {
     
-    ListNode* dummy = new ListNode();
+    CustomLL::ListNode* dummy = new CustomLL::ListNode();
     dummy->next = *head;
 
-    ListNode* slow = dummy;
-    ListNode* fast = *head;
+    CustomLL::ListNode* slow = dummy;
+    CustomLL::ListNode* fast = *head;
 
     while (n--)
         fast = fast->next;
@@ -103,9 +64,10 @@ int main() {
     // vector<int> nums = {1};  int n = 1;
     // vector<int> nums = {1,2};  int n = 1;
 
-    ListNode* head = createLL(nums);
-    ListNode* delHead = removeNthFromEnd(&head,n);
-    printList(delHead);
+    CustomLL cll;
+    CustomLL::ListNode* head = cll.createLL(nums);
+    CustomLL::ListNode* delHead = removeNthFromEnd(&head,n);
+    cll.printList(delHead);
 
     return 0;
 }

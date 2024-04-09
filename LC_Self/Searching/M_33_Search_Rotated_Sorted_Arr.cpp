@@ -15,7 +15,7 @@ The array is divided into two sorted lists.
 Binary search has three pointers: L,M,R; with L <= R always satisfied.
 
 How to check which portion of array we are in?
-- If L <= M, then we are in left subarray as M is part of Left subarray
+- If L <= M, then we are in left subarray and then M is part of Left subarray
 
 Assuming that mid is in left sorted subarray and we know we are in left sorted subarray
 - Say target > mid, 
@@ -55,7 +55,7 @@ int search(vector<int>& nums, int target) {
         if (target == nums[mid])
             return mid;
         
-        // Assuming we are in left subarray
+        // Checking whether middle values is in left subarray 
         if (nums[l] <= nums[mid]) {
             if ( (target > nums[mid]) || (target < nums[l]) )
                 l = mid + 1;
@@ -63,7 +63,7 @@ int search(vector<int>& nums, int target) {
                 r = mid - 1;   
         }
 
-        // Assuming we are in right subarray
+        // Else, middle value is in right subarray
         else {
             if ( (target < nums[mid]) || (target > nums[r]))
                 r = mid - 1;
@@ -83,6 +83,9 @@ int main() {
 
     // vector<int> nums = {1};
     // int target = 0;
+
+    vector<int> nums = {3, 5, 1};
+    int target = 3;
 
     int index = search(nums, target);
     cout << index << endl;

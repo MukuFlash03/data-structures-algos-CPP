@@ -42,54 +42,13 @@ B. Extra memory Approach
 #include<stdio.h>
 #include<iostream>
 #include<vector>
+#include "CustomLL.h"
 
 using namespace std;
 
-
-struct ListNode {
-    int val;
-    ListNode* next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
-
-void insertNode(ListNode** head, int item)
-{
-	ListNode* temp = new ListNode(item);
-	ListNode* ptr;
-
-	if (*head == NULL)
-		*head = temp;
-	else {
-		ptr = *head;
-		while (ptr->next != NULL)
-			ptr = ptr->next;
-		ptr->next = temp;
-	}
-}
-
-ListNode* createLL(vector<int> nums) {
-    ListNode* head = NULL;
-	for (const auto& elem : nums)
-		insertNode(&head, elem);
-    return head;
-}
-
-void printList(ListNode* head) {
-    ListNode* temp = head;
-    while (temp != NULL) {
-        cout << temp->val << "\t";
-        temp = temp->next;
-    }
-    cout << '\n';
-}
-
-void reorderList(ListNode** head) {
-
-    ListNode* slow = *head;
-    ListNode* fast = *head;
-
+void reorderList(CustomLL::ListNode** head) {
+    CustomLL::ListNode* slow = *head;
+    CustomLL::ListNode* fast = *head;
 
     // Divide list into two halves
     while (fast != NULL && fast->next != NULL) {
@@ -97,11 +56,10 @@ void reorderList(ListNode** head) {
         fast = fast->next->next;
     }
 
-
-    // Reverse 2nd half
-    ListNode* list2 = NULL;
-    ListNode* prev = NULL;
-    ListNode* temp = NULL;
+    // Reverse   2nd half
+    CustomLL::ListNode* list2 = NULL;
+    CustomLL::ListNode* prev = NULL;
+    CustomLL::ListNode* temp = NULL;
 
     list2 = slow->next;
     slow->next = NULL;
@@ -113,12 +71,11 @@ void reorderList(ListNode** head) {
         list2 = temp;
     }
 
-
     // Merge two halves
-    ListNode* first = *head;
-    ListNode* second = prev;
-    ListNode* temp1 = NULL;
-    ListNode* temp2 = NULL;
+    CustomLL::ListNode* first = *head;
+    CustomLL::ListNode* second = prev;
+    CustomLL::ListNode* temp1 = NULL;
+    CustomLL::ListNode* temp2 = NULL;
 
     while (second != NULL) {
         temp1 = first->next;
@@ -137,10 +94,11 @@ int main() {
 
     // vector<int> nums = {1,2,3,4};
     vector<int> nums = {1,2,3,4,5};
-
-    ListNode* list = createLL(nums);
+    
+    CustomLL cll;
+    CustomLL::ListNode* list = cll.createLL(nums);
     reorderList(&list);
-    printList(list);
+    cll.printList(list);
 
     return 0;
 }

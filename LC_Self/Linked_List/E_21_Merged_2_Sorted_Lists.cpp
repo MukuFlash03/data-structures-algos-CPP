@@ -31,59 +31,18 @@ A. Basic Approach
 #include<stdio.h>
 #include<iostream>
 #include<vector>
+#include "CustomLL.h"
 
 using namespace std;
 
+CustomLL::ListNode* mergeTwoLists(CustomLL::ListNode* list1, CustomLL::ListNode* list2) {
 
-struct ListNode {
-    int val;
-    ListNode* next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
+    CustomLL cll;
+    CustomLL::ListNode* dummy = new CustomLL::ListNode();
+    //CustomLL::ListNode* result = new CustomLL::ListNode();
+    CustomLL::ListNode* result = dummy;
 
-void insertNode(ListNode** head, int item)
-{
-	ListNode* temp = new ListNode(item);
-	ListNode* ptr;
-
-	if (*head == NULL)
-		*head = temp;
-	else {
-		ptr = *head;
-		while (ptr->next != NULL)
-			ptr = ptr->next;
-		ptr->next = temp;
-	}
-}
-
-ListNode* createLL(vector<int> nums) {
-    ListNode* head = NULL;
-	for (const auto& elem : nums)
-		insertNode(&head, elem);
-    return head;
-}
-
-void printList(ListNode* head) {
-    ListNode* temp = head;
-    while (temp != NULL) {
-        cout << temp->val << "\t";
-        temp = temp->next;
-    }
-    cout << '\n';
-}
-
-bool notEmptyList(ListNode* head) {
-    return head != nullptr;
-}
-
-ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-
-    ListNode* dummy = new ListNode();
-    ListNode* result = dummy;
-
-    while (notEmptyList(list1) && notEmptyList(list2)) {
+    while (cll.notEmptyList(list1) && cll.notEmptyList(list2)) {
         if (list1->val < list2->val) {
             result->next = list1;
             list1 = list1->next;
@@ -95,9 +54,9 @@ ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         result = result->next;
     }
 
-    if (notEmptyList(list1))
+    if (cll.notEmptyList(list1))
         result->next = list1;
-    else if (notEmptyList(list2))
+    else if (cll.notEmptyList(list2))
         result->next = list2;
 
     return dummy->next;
@@ -105,14 +64,14 @@ ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
 
 
 int main() {
-
     vector<int> list1 = {1,2,4};
     vector<int> list2 = {1,3,4};
 
-    ListNode* head1 = createLL(list1);
-    ListNode* head2 = createLL(list2);
-    ListNode* mergedHead = mergeTwoLists(head1,head2);
-    printList(mergedHead);
+    CustomLL cll;
+    CustomLL::ListNode* head1 = cll.createLL(list1);
+    CustomLL::ListNode* head2 = cll.createLL(list2);
+    CustomLL::ListNode* mergedHead = mergeTwoLists(head1,head2);
+    cll.printList(mergedHead);
 
     return 0;
 }

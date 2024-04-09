@@ -17,7 +17,7 @@ NC - https://www.youtube.com/watch?v=ZI2z5pq0TqA
 
 Tried to solve it using two pointers.
 I set l and r initially to 0.
-THen I check if height[r] > height[l], if yes, then I set l = r.
+Then I check if height[r] > height[l], if yes, then I set l = r.
 Else, I calculate the local area and add it to the ans.
 I increment r.
 I keep doing this till r < height.size().

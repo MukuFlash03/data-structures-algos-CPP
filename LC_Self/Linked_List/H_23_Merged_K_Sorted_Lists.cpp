@@ -25,59 +25,17 @@ A. Optimal Approach
 #include<stdio.h>
 #include<iostream>
 #include<vector>
+#include "CustomLL.h"
 
 using namespace std;
 
+CustomLL::ListNode* mergeTwoLists(CustomLL::ListNode* list1, CustomLL::ListNode* list2) {
 
-struct ListNode {
-    int val;
-    ListNode* next;
-    ListNode() : val(0), next(nullptr) {}
-    ListNode(int x) : val(x), next(nullptr) {}
-    ListNode(int x, ListNode *next) : val(x), next(next) {}
-};
+    CustomLL cll;
+    CustomLL::ListNode* dummy = new CustomLL::ListNode();
+    CustomLL::ListNode* result = dummy;
 
-void insertNode(ListNode** head, int item)
-{
-	ListNode* temp = new ListNode(item);
-	ListNode* ptr;
-
-	if (*head == NULL)
-		*head = temp;
-	else {
-		ptr = *head;
-		while (ptr->next != NULL)
-			ptr = ptr->next;
-		ptr->next = temp;
-	}
-}
-
-ListNode* createLL(vector<int> nums) {
-    ListNode* head = NULL;
-	for (const auto& elem : nums)
-		insertNode(&head, elem);
-    return head;
-}
-
-void printList(ListNode* head) {
-    ListNode* temp = head;
-    while (temp != NULL) {
-        cout << temp->val << "\t";
-        temp = temp->next;
-    }
-    cout << '\n';
-}
-
-bool notEmptyList(ListNode* head) {
-    return head != nullptr;
-}
-
-ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
-
-    ListNode* dummy = new ListNode();
-    ListNode* result = dummy;
-
-    while (notEmptyList(list1) && notEmptyList(list2)) {
+    while (cll.notEmptyList(list1) && cll.notEmptyList(list2)) {
         if (list1->val < list2->val) {
             result->next = list1;
             list1 = list1->next;
@@ -89,24 +47,24 @@ ListNode* mergeTwoLists(ListNode* list1, ListNode* list2) {
         result = result->next;
     }
 
-    if (notEmptyList(list1))
+    if (cll.notEmptyList(list1))
         result->next = list1;
-    else if (notEmptyList(list2))
+    else if (cll.notEmptyList(list2))
         result->next = list2;
 
     return dummy->next;
 }
 
-ListNode* mergeKLists(vector<ListNode*>& lists) {
+CustomLL::ListNode* mergeKLists(vector<CustomLL::ListNode*>& lists) {
 
     if (lists.empty() || lists.size() == 0)
         return NULL;
 
-    ListNode* list1 = new ListNode();
-    ListNode* list2 = new ListNode();
+    CustomLL::ListNode* list1 = new CustomLL::ListNode();
+    CustomLL::ListNode* list2 = new CustomLL::ListNode();
 
     while (lists.size() > 1) {
-        vector<ListNode*> mergedLists;
+        vector<CustomLL::ListNode*> mergedLists;
 
         for (int i = 0; i < lists.size(); i += 2) {
             list1 = lists[i];
@@ -129,14 +87,15 @@ int main() {
     // vector<vector<int>> nums = {};
     // vector<vector<int>> nums = {{}};
 
-    vector<ListNode*> lists;
+    CustomLL cll;
+    vector<CustomLL::ListNode*> lists;
 
     for (const auto& num : nums) {
-        ListNode* head = createLL(num);
+        CustomLL::ListNode* head = cll.createLL(num);
         lists.push_back(head);
     }
-    ListNode* mergedHead = mergeKLists(lists);
-    printList(mergedHead);
+    CustomLL::ListNode* mergedHead = mergeKLists(lists);
+    cll.printList(mergedHead);
 
     return 0;
 }

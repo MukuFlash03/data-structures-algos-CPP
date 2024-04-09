@@ -86,6 +86,7 @@ C. XOR Operation
 #include<stdio.h>
 #include<iostream>
 #include<vector>
+// #include "CustomLL.h"
 
 using namespace std;
 
@@ -136,50 +137,14 @@ int main() {
 
 
 /*
-struct ListNode {
-    int val;
-    ListNode* next;
-    ListNode(int x) : val(x), next(NULL) {}
-};
-
-void insertNode(ListNode** head, int item)
-{
-	ListNode* temp = new ListNode(item);
-	ListNode* ptr;
-
-	if (*head == NULL)
-		*head = temp;
-	else {
-		ptr = *head;
-		while (ptr->next != NULL)
-			ptr = ptr->next;
-		ptr->next = temp;
-	}
-}
-
-ListNode* createLL(vector<int> nums) {
-    ListNode* head = NULL;
-	for (const auto& elem : nums)
-		insertNode(&head, elem);
-    return head;
-}
-
-void printList(ListNode* head) {
-    ListNode* temp = head;
-    while (temp != NULL) {
-        cout << temp->val << "\t";
-        temp = temp->next;
-    }
-    cout << '\n';
-}
-
 int findDuplicate(vector<int>& nums) {
     
-    ListNode* head = createLL(nums);
+    Custom cll;
+    CustomLL::ListNode* head = cll.createLL(nums);
 
-    ListNode* slow = head;
-    ListNode* fast = head;
-    ListNode* slow2 = head;
+    CustomLL::ListNode* slow = head;
+    CustomLL::ListNode* fast = head;
+    CustomLL::ListNode* slow2 = head;
 
     while (fast != NULL & fast->next != NULL) {
         slow = slow->next;

@@ -80,13 +80,14 @@ int firstBadVersion(int n) {
             if(isBadVersion(mid) == false)
                 low = mid + 1;
             else {
-                ans = mid;
+                // ans = mid;
                 if(mid == 1 || isBadVersion(mid-1) == false) 
                     return mid;
                 high = mid - 1;
             }
         }
-        return ans;
+        // return ans;
+        return -1;
     }
 
 

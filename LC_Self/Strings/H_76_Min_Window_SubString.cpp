@@ -15,28 +15,34 @@ NC - https://www.youtube.com/watch?v=jSto0O4AJbM
 
 A. Sliding Window (Optimal)
 
+0. If t is empty or s is empty, return t.
+
 1. Two frequency maps: 
     window - Dynamic; s-chars in current substring window
     countT - Fixed;   t-chars in t-string
 
-2. Two counters: 
-    need = Fixed; unique chars in countT
-    have = Dynamic; unique chars in window
+2. Two counters for unique chars: 
+    have = Dynamic; in window -> Calculate on the fly in the while loop
+    need = Fixed; in countT -> pre-compute
 
 3. Outer loop: Start expanding end pointer and updating window map
 4.  If char at end pointer exists in countT and freq is same in both maps,
       then increment "have" by 1
 5.  While have == need, 
-      update min length of substring with latest start and end pointers
-      update resLR with latest start and end pointers
-6.    Contract window by one character by incrementing start pointer and updating window map
+      if current window length is less than min length,
+        update min length of substring with latest start and end pointers
+        update resLR with latest start and end pointers
+6.    Contract window by one character by updating window map for char at start pointer (and incrementing start pointer -> Done in step 8)
 7.    If char at start pointer exists in countT and freq is less in window map
        then decrement "have" by 1
+       This covers the case when say, we have 2 'A's in window and 3 'A's in countT
+       However, have isn't decremented if more than 3 'A's are present in window since we still have more 'A's in window map
 8.    Increment start;
 9.  Increment end.
 
 10. Update start and end pointers with latest resLR values
-11. Return substring with start and end from resLR as bounds if min length != INT_MAX
+11. Return substring with start and end from resLR as bounds 
+        if min length != INT_MAX
         else return ""
 
 
@@ -52,11 +58,8 @@ using namespace std;
 
 string minWindow(string s, string t) {
 
-    if (t == "")
-        return "";
-    
-    if (s == t)
-        return s;
+    if (t == "" || s == t)
+        return t;
 
     map<char, int> countT;
     map<char, int> window;
@@ -113,11 +116,11 @@ string minWindow(string s, string t) {
 
 int main() {
 
-    // string s = "ADOBECODEBANC", t = "ABC";
+    string s = "ADOBECODEBANC", t = "ABC";
     // string s = "a", t = "a";
     // string s = "a", t = "aa";
     // string s = "aa", t = "aa";
-    string s = "bbaa", t = "aba";
+    // string s = "bbaa", t = "aba";
 
     string res = minWindow(s,t);
 

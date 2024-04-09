@@ -30,51 +30,14 @@ A. Optimal Approach
 #include<stdio.h>
 #include<iostream>
 #include<vector>
+#include "CustomLL.h"
 
 using namespace std;
 
-
-struct ListNode {
-    int val;
-    ListNode* next;
-    ListNode(int x) : val(x), next(NULL) {}
-};
-
-void insertNode(ListNode** head, int item)
-{
-	ListNode* temp = new ListNode(item);
-	ListNode* ptr;
-
-	if (*head == NULL)
-		*head = temp;
-	else {
-		ptr = *head;
-		while (ptr->next != NULL)
-			ptr = ptr->next;
-		ptr->next = temp;
-	}
-}
-
-ListNode* createLL(vector<int> nums) {
-    ListNode* head = NULL;
-	for (const auto& elem : nums)
-		insertNode(&head, elem);
-    return head;
-}
-
-void printList(ListNode* head) {
-    ListNode* temp = head;
-    while (temp != NULL) {
-        cout << temp->val << "\t";
-        temp = temp->next;
-    }
-    cout << '\n';
-}
-
-ListNode* reverseList(ListNode* head) {
-        ListNode* nextNode = NULL;
-        ListNode* prevNode = NULL;
-        ListNode* currentNode = head;
+CustomLL::ListNode* reverseList(CustomLL::ListNode* head) {
+        CustomLL::ListNode* nextNode = NULL;
+        CustomLL::ListNode* prevNode = NULL;
+        CustomLL::ListNode* currentNode = head;
 
         while (currentNode) {
             nextNode = currentNode->next;
@@ -87,15 +50,15 @@ ListNode* reverseList(ListNode* head) {
 }
 
 int main() {
-
     vector<int> nums = {1,2,3,4,5};
     // vector<int> nums = {1,2};
     // vector<int> nums = {};
 
-    ListNode* head = createLL(nums);
-    ListNode* reversed = reverseList(head);
+    CustomLL cll;
+    CustomLL::ListNode* head = cll.createLL(nums);
+    CustomLL::ListNode* reversed = reverseList(head);
     
-    printList(reversed);
+    cll.printList(reversed);
 
     return 0;
 }

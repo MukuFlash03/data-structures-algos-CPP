@@ -1,6 +1,6 @@
 /*
 
-Type: Two Pointers
+Type: Two Pointers, Sliding Window
 https://www.youtube.com/watch?v=-gjxg6Pln50
 
 Problem: https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
@@ -37,7 +37,7 @@ int maxProfit(vector<int>& prices) {
     int l = 0, r = 1;
     int profit = 0;
 
-    while (l <= r && r < prices.size()) {
+    while (r < prices.size()) {
         if (prices[l] > prices[r])
             l = r;
         else 

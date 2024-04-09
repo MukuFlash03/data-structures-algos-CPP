@@ -4,31 +4,31 @@ Problem: https://leetcode.com/problems/sliding-window-maximum/
 Solution(s): 
 
 YouTube
-Neetcode - https://www.youtube.com/watch?v=cTBiBSnjO3c
+NC - https://www.youtube.com/watch?v=DfljaUwZsOk
 */
 
 
 /*
 
-1. Brute Force
+1. Brute Force - O(k*(n-k))
 
 - Sort array.
 - Sliding window
 - Keep adding each new element
 - Compute max for each window.
 
-2. Optimal solution
+2. Optimal solution - O(n)
 
 - Sort array.
 - Iterate through list.
+    - While current element > back of queue
+        - Pop from the back end of queue.
     - If an element in the queue, goes out of the current window
         - Pop from the front end of queue.
-    - If current element > back of queue
-        - Pop from the back end of queue.
     - Add current element to the queue.
     - If current window size >= k
-        - Add the max from current window to the result array.
-        - Increment l
+        - Add the max from current window to the result arra.
+        - Increment l to reduce window size and slide window.
     - Increment r
 
 Using a queue so that elements can be added/removed from the front as well as the back.
@@ -74,11 +74,14 @@ vector<int> maxSlidingWindow(vector<int>& nums, int k) {
 
 int main() {
 
-    vector<int> nums = {1,3,-1,-3,5,3,6,7};
-    int k = 3;
+    // vector<int> nums = {1,3,-1,-3,5,3,6,7};
+    // int k = 3;
     
     // vector<int> nums = {1};
     // int k = 1;
+
+    vector<int> nums = {1,1,1,1,1,4,3,7,6};
+    int k = 6;
 
     vector<int> answer = maxSlidingWindow(nums,k);
 
