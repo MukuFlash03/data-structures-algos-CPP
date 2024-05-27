@@ -7,7 +7,7 @@ Solution(s):
 - https://leetcode.com/problems/validate-binary-search-tree/solutions/2982339/optimized-approach/ 
 
 YouTube
-https://www.youtube.com/watch?v=s6ATEkipzow
+NC - https://www.youtube.com/watch?v=s6ATEkipzow
 */
 
 
@@ -32,62 +32,11 @@ Time Complexity: O(n)
 #include<stdio.h>
 #include<iostream>
 #include<vector>
+#include "CustomTree.h"
 
 using namespace std;
 
-
- // Definition for a binary tree node.
- struct TreeNode {
-     int val;
-     TreeNode *left;
-     TreeNode *right;
-     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- };
-
-
-void createTree(TreeNode* node, int i, vector<string>& arr) {
-    if (node != nullptr) {
-        if (2 * i + 1 < arr.size()) {
-            if (arr[2 * i + 1] == "null")
-                node->left = nullptr;
-            else
-                node->left = new TreeNode(stoi(arr[2 * i + 1]));
-            createTree(node->left, 2 * i + 1, arr);
-        }
-
-        if (2 * i + 2 < arr.size()) {
-            if (arr[2 * i + 2] == "null")
-                node->right = nullptr;
-            else
-                node->right = new TreeNode(stoi(arr[2 * i + 2]));
-            createTree(node->right, 2 * i + 2, arr);
-        }
-    }
-}
-
-TreeNode* levelOrderCreateTree(vector<string>& arr) {
-    if (arr.size() == 0)
-        return nullptr;
-    
-    TreeNode *root = new TreeNode(stoi(arr[0]));
-    createTree(root, 0, arr);
-
-    return root;
-}
-
-void printTree(TreeNode* root) { 
-    if(root == nullptr) {
-        // cout << "null\t";
-        return;
-    }
-    cout << root->val << "\t";
-    printTree(root->left);
-    printTree(root->right);
-}
-
-bool isValidNode(TreeNode* node, long left, long right) {
+bool isValidNode(CustomTree::TreeNode* node, long left, long right) {
     if (node == nullptr)
         return true;
 
@@ -97,7 +46,7 @@ bool isValidNode(TreeNode* node, long left, long right) {
     return isValidNode(node->left, left, node->val) && isValidNode(node->right, node->val, right);
 }
 
-bool isValidBST(TreeNode* root) {
+bool isValidBST(CustomTree::TreeNode* root) {
     return isValidNode(root, LONG_MIN, LONG_MAX);
 }
 
@@ -107,7 +56,8 @@ int main() {
     vector<string> nodes = {"2","1","3"};
     // vector<string> nodes = {"5","1","4","null","null","3","6"};
     
-    TreeNode* root = levelOrderCreateTree(nodes);
+    CustomTree ctree;
+    CustomTree::TreeNode* root = ctree.levelOrderCreateTree(nodes);
     cout << isValidBST(root) << "\n";
 
     return 0;

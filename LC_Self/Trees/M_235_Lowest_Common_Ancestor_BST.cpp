@@ -32,64 +32,13 @@ Time Complexity = O(logn) = Height of tree
 #include<stdlib.h>
 #include<stdio.h>
 #include<iostream>
+#include "CustomTree.h"
 
 using namespace std;
 
+CustomTree::TreeNode* lowestCommonAncestor(CustomTree::TreeNode* root, CustomTree::TreeNode* p, CustomTree::TreeNode* q) {
 
- // Definition for a binary tree node.
- struct TreeNode {
-     int val;
-     TreeNode *left;
-     TreeNode *right;
-     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- };
-
-
-void createTree(TreeNode* node, int i, vector<string>& arr) {
-    if (node != nullptr) {
-        if (2 * i + 1 < arr.size()) {
-            if (arr[2 * i + 1] == "null")
-                node->left = nullptr;
-            else
-                node->left = new TreeNode(stoi(arr[2 * i + 1]));
-            createTree(node->left, 2 * i + 1, arr);
-        }
-
-        if (2 * i + 2 < arr.size()) {
-            if (arr[2 * i + 2] == "null")
-                node->right = nullptr;
-            else
-                node->right = new TreeNode(stoi(arr[2 * i + 2]));
-            createTree(node->right, 2 * i + 2, arr);
-        }
-    }
-}
-
-TreeNode* levelOrderCreateTree(vector<string>& arr) {
-    if (arr.size() == 0)
-        return nullptr;
-    
-    TreeNode *root = new TreeNode(stoi(arr[0]));
-    createTree(root, 0, arr);
-
-    return root;
-}
-
-void printTree(TreeNode* root) { 
-    if(root == nullptr) {
-        // cout << "null\t";
-        return;
-    }
-    cout << root->val << "\t";
-    printTree(root->left);
-    printTree(root->right);
-}
-
-TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-
-    TreeNode* currNode = root;
+    CustomTree::TreeNode* currNode = root;
 
     while (currNode != nullptr) {
         if ( (p->val > currNode->val) && (q->val > currNode->val) )
@@ -112,9 +61,13 @@ int main() {
     // vector<string> nodes = {"2","1"};
     // int p = 2, q = 1;
     
-    TreeNode* root = levelOrderCreateTree(nodes);
-    // TreeNode* lca = lowestCommonAncestor(root, p, q);
-    // cout << lca->val << "\n";
+    CustomTree ctree;
+    CustomTree::TreeNode* root = ctree.levelOrderCreateTree(nodes);
+    CustomTree::TreeNode* nodeP = ctree.findNode(root, p);
+    CustomTree::TreeNode* nodeQ = ctree.findNode(root, q);
+
+    CustomTree::TreeNode* lca = lowestCommonAncestor(root, nodeP, nodeQ);
+    cout << lca->val << "\n";
 
     return 0;
 }

@@ -11,6 +11,11 @@ Solution(s):
 - https://leetcode.com/problems/reverse-linked-list/solutions/803955/c-iterative-vs-recursive-solutions-compared-and-explained-99-time-85-space/
 - https://leetcode.com/problems/reverse-linked-list/solutions/2458632/easy-0-ms-100-fully-explained-java-c-python-js-c-python3-recursive-iterative/
 
+
+Visualization
+https://www.linkedin.com/pulse/js-reversing-linked-list-animated-explanations-mike-cronin-7snle
+https://dev.to/jacobjzhang/a-visual-guide-to-reversing-a-linked-list-161e
+
 */
 
 /*

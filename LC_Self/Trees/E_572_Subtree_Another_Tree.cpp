@@ -46,62 +46,11 @@ II. Function for SameTree
 #include<stdio.h>
 #include<iostream>
 #include<vector>
+#include "CustomTree.h"
 
 using namespace std;
 
-
- // Definition for a binary tree node.
- struct TreeNode {
-     int val;
-     TreeNode *left;
-     TreeNode *right;
-     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- };
-
-
-void createTree(TreeNode* node, int i, vector<string>& arr) {
-    if (node != nullptr) {
-        if (2 * i + 1 < arr.size()) {
-            if (arr[2 * i + 1] == "null")
-                node->left = nullptr;
-            else
-                node->left = new TreeNode(stoi(arr[2 * i + 1]));
-            createTree(node->left, 2 * i + 1, arr);
-        }
-
-        if (2 * i + 2 < arr.size()) {
-            if (arr[2 * i + 2] == "null")
-                node->right = nullptr;
-            else
-                node->right = new TreeNode(stoi(arr[2 * i + 2]));
-            createTree(node->right, 2 * i + 2, arr);
-        }
-    }
-}
-
-TreeNode* levelOrderCreateTree(vector<string>& arr) {
-    if (arr.size() == 0)
-        return nullptr;
-    
-    TreeNode *root = new TreeNode(stoi(arr[0]));
-    createTree(root, 0, arr);
-
-    return root;
-}
-
-void printTree(TreeNode* root) { 
-    if(root == nullptr) {
-        // cout << "null\t";
-        return;
-    }
-    cout << root->val << "\t";
-    printTree(root->left);
-    printTree(root->right);
-}
-
-bool isSameTree(TreeNode* p, TreeNode* q) {
+bool isSameTree(CustomTree::TreeNode* p, CustomTree::TreeNode* q) {
     if (p == nullptr && q == nullptr)
         return true;
     if ( (p == nullptr || q == nullptr) || (p->val != q->val) )
@@ -109,7 +58,7 @@ bool isSameTree(TreeNode* p, TreeNode* q) {
     return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
 }
 
-bool isSubtree(TreeNode* root, TreeNode* subRoot) {
+bool isSubtree(CustomTree::TreeNode* root, CustomTree::TreeNode* subRoot) {
     if (subRoot == nullptr)
         return true;
     if (root == nullptr)
@@ -121,14 +70,15 @@ bool isSubtree(TreeNode* root, TreeNode* subRoot) {
 
 int main() {
 
-    // vector<string> nodesA = {"3","4","5","1","2"};
-    // vector<string> nodesB = {"4","1","2"};
-
-    vector<string> nodesA = {"3","4","5","1","2","null","null","null","null","0"};
+    vector<string> nodesA = {"3","4","5","1","2"};
     vector<string> nodesB = {"4","1","2"};
 
-    TreeNode* rootA = levelOrderCreateTree(nodesA);
-    TreeNode* rootB = levelOrderCreateTree(nodesB);
+    // vector<string> nodesA = {"3","4","5","1","2","null","null","null","null","0"};
+    // vector<string> nodesB = {"4","1","2"};
+
+    CustomTree ctree;
+    CustomTree::TreeNode* rootA = ctree.levelOrderCreateTree(nodesA);
+    CustomTree::TreeNode* rootB = ctree.levelOrderCreateTree(nodesB);
     cout << isSubtree(rootA, rootB) << "\n";
 
     return 0;

@@ -29,69 +29,18 @@ Memory Complexity: O(n)
 #include<iostream>
 #include<queue>
 #include<vector>
+#include "CustomTree.h"
 
 using namespace std;
 
-
- // Definition for a binary tree node.
- struct TreeNode {
-     int val;
-     TreeNode *left;
-     TreeNode *right;
-     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- };
-
-
-void createTree(TreeNode* node, int i, vector<string>& arr) {
-    if (node != nullptr) {
-        if (2 * i + 1 < arr.size()) {
-            if (arr[2 * i + 1] == "null")
-                node->left = nullptr;
-            else
-                node->left = new TreeNode(stoi(arr[2 * i + 1]));
-            createTree(node->left, 2 * i + 1, arr);
-        }
-
-        if (2 * i + 2 < arr.size()) {
-            if (arr[2 * i + 2] == "null")
-                node->right = nullptr;
-            else
-                node->right = new TreeNode(stoi(arr[2 * i + 2]));
-            createTree(node->right, 2 * i + 2, arr);
-        }
-    }
-}
-
-TreeNode* levelOrderCreateTree(vector<string>& arr) {
-    if (arr.size() == 0)
-        return nullptr;
-    
-    TreeNode *root = new TreeNode(stoi(arr[0]));
-    createTree(root, 0, arr);
-
-    return root;
-}
-
-void printTree(TreeNode* root) { 
-    if(root == nullptr) {
-        // cout << "null\t";
-        return;
-    }
-    cout << root->val << "\t";
-    printTree(root->left);
-    printTree(root->right);
-} 
-
-vector<vector<int>> levelOrder(TreeNode* root) {
+vector<vector<int>> levelOrder(CustomTree::TreeNode* root) {
 
     vector<vector<int>> levels;
 
     if (root == nullptr)
         return levels;
     
-    queue<TreeNode*> qNodes;
+    queue<CustomTree::TreeNode*> qNodes;
     qNodes.push(root);
 
     while (!qNodes.empty()) {
@@ -100,7 +49,7 @@ vector<vector<int>> levelOrder(TreeNode* root) {
         // for (int i = 0; i < qNodes.size(); i++) {
         int len = qNodes.size();
         while (len--) {
-            TreeNode* node = qNodes.front();
+            CustomTree::TreeNode* node = qNodes.front();
             qNodes.pop();
 
             if (node != nullptr)
@@ -118,22 +67,23 @@ vector<vector<int>> levelOrder(TreeNode* root) {
     return levels;
 }
 
-
 int main() {
 
     vector<string> nodes = {"3","9","20","null","null","15","7"};
     // vector<string> nodes = {"1"};
     // vector<string> nodes = {};
     
-    TreeNode* root = levelOrderCreateTree(nodes);
+    CustomTree ctree;
+    CustomTree::TreeNode* root = ctree.levelOrderCreateTree(nodes);
     // printTree(node);
     
     vector<vector<int>> levels = levelOrder(root);
 
-    for (const auto& level : levels)
+    for (const auto& level: levels) {
         for (const auto& elem: level)
             cout << elem << "\t";
-        cout << "\n";
+    }
+    cout << "\n";
 
     return 0;
 }

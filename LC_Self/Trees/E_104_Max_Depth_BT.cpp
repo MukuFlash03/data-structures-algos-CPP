@@ -45,79 +45,28 @@ C. Iterative Depth-first search
 #include<queue>
 #include<vector>
 #include<stack>
+#include "CustomTree.h"
 
 using namespace std;
 
-
- // Definition for a binary tree node.
- struct TreeNode {
-     int val;
-     TreeNode *left;
-     TreeNode *right;
-     TreeNode() : val(0), left(nullptr), right(nullptr) {}
-     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
- };
-
-
-void createTree(TreeNode* node, int i, vector<string>& arr) {
-    if (node != nullptr) {
-        if (2 * i + 1 < arr.size()) {
-            if (arr[2 * i + 1] == "null")
-                node->left = nullptr;
-            else
-                node->left = new TreeNode(stoi(arr[2 * i + 1]));
-            createTree(node->left, 2 * i + 1, arr);
-        }
-
-        if (2 * i + 2 < arr.size()) {
-            if (arr[2 * i + 2] == "null")
-                node->right = nullptr;
-            else
-                node->right = new TreeNode(stoi(arr[2 * i + 2]));
-            createTree(node->right, 2 * i + 2, arr);
-        }
-    }
-}
-
-TreeNode* levelOrderCreateTree(vector<string>& arr) {
-    if (arr.size() == 0)
-        return nullptr;
-    
-    TreeNode *root = new TreeNode(stoi(arr[0]));
-    createTree(root, 0, arr);
-
-    return root;
-}
-
-void printTree(TreeNode* root) { 
-    if(root == nullptr) {
-        // cout << "null\t";
-        return;
-    }
-    cout << root->val << "\t";
-    printTree(root->left);
-    printTree(root->right);
-}
-
-int maxDepthA(TreeNode* root) {
+int maxDepthA(CustomTree::TreeNode* root) {
     if (root == nullptr)
         return 0;
     return 1 + max(maxDepthA(root->left), maxDepthA(root->right));
 } 
 
-int maxDepthB(TreeNode* root) {
+int maxDepthB(CustomTree::TreeNode* root) {
     if (root == nullptr)
         return 0;
     
-    queue<TreeNode*> qNodes;
+    queue<CustomTree::TreeNode*> qNodes;
     qNodes.push(root);
     int depth = 0;
 
     while (!qNodes.empty()) {
         int len = qNodes.size();
         while (len--) {
-            TreeNode* node = qNodes.front();
+            CustomTree::TreeNode* node = qNodes.front();
             qNodes.pop();
             
             cout << node->val << "," << depth << "\t";
@@ -131,17 +80,17 @@ int maxDepthB(TreeNode* root) {
     return depth;
 } 
 
-int maxDepthC(TreeNode* root) {
+int maxDepthC(CustomTree::TreeNode* root) {
     if (root == nullptr)
         return 0;
     
-    stack<pair<TreeNode*,int>> sNodes;
+    stack<pair<CustomTree::TreeNode*,int>> sNodes;
     sNodes.push({root,0});
     int depth = 0, currDepth = 0;
 
     while (!sNodes.empty()) {
         
-        TreeNode* node = sNodes.top().first;
+        CustomTree::TreeNode* node = sNodes.top().first;
         currDepth = sNodes.top().second;
         sNodes.pop();
 
@@ -187,11 +136,12 @@ int main() {
     vector<string> nodes = {"3","9","20","null","null","15","7"};
     // vector<string> nodes = {"1","null","2"};
     
-    TreeNode* root = levelOrderCreateTree(nodes);
+    CustomTree ctree;
+    CustomTree::TreeNode* root = ctree.levelOrderCreateTree(nodes);
     // printTree(node);
     cout << "Recursive DFS: " << maxDepthA(root) << "\n";
     cout << "Iterative BFS: " << maxDepthB(root) << "\n";
     cout << "Iterative DFS: " << maxDepthC(root) << "\n";
-
+    
     return 0;
 }

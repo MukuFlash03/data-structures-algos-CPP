@@ -76,7 +76,9 @@
 		"__node_handle": "cpp",
 		"__locale": "cpp",
 		"locale": "cpp",
-		"variant": "cpp"
+		"variant": "cpp",
+		"queue": "cpp",
+		"__config": "cpp"
 	},
 
 	"code-runner.executorMap": {
@@ -84,7 +86,8 @@
 		"c": "cd $dir && gcc $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt",
 		// "cpp": "cd $dir && g++ -std=c++17 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt && rm $fileNameWithoutExt",
 		// "cpp": "cd $dir && [ -f CustomLL.h ] && g++ -std=c++17 $fileName CustomLL.cpp -o $fileNameWithoutExt && $dir$fileNameWithoutExt || g++ -std=c++17 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt && rm $fileNameWithoutExt",
-		"cpp": "cd $dir && [ -f CustomLL.h ] && { g++ -std=c++17 $fileName CustomLL.cpp -o $fileNameWithoutExt && $dir$fileNameWithoutExt && rm $fileNameWithoutExt; } || { g++ -std=c++17 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt && rm $fileNameWithoutExt; }",
+		// "cpp": "cd $dir && [ -f CustomLL.h ] && { g++ -std=c++17 $fileName CustomLL.cpp -o $fileNameWithoutExt && $dir$fileNameWithoutExt && rm $fileNameWithoutExt; } || { g++ -std=c++17 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt && rm $fileNameWithoutExt; }",
+		"cpp": "cd $dir && { [ -f CustomLL.h ] && g++ -std=c++17 $fileName CustomLL.cpp -o $fileNameWithoutExt && $dir$fileNameWithoutExt && rm $fileNameWithoutExt; } || { [ -f CustomTree.h ] && g++ -std=c++17 $fileName CustomTree.cpp -o $fileNameWithoutExt && $dir$fileNameWithoutExt && rm $fileNameWithoutExt; } || { g++ -std=c++17 $fileName -o $fileNameWithoutExt && $dir$fileNameWithoutExt && rm $fileNameWithoutExt; }",
 		// "cpp": "cd $dir && [ -f CustomLL.h ] && g++ -std=c++17 $fileName CustomLL.cpp -o $fileNameWithoutExt && $dir$fileNameWithoutExt && rm $fileNameWithoutExt || echo '2nd command' ",
 		"python": "python3 -u $dir$fileName"
 	}
