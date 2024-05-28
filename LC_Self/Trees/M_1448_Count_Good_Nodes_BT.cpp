@@ -14,7 +14,7 @@ NC - https://www.youtube.com/watch?v=7cp5imvDzl4
 
 A. Recursive Approach
 
-0. Initial dfs call with root and INT_MIN.
+0. Initial / Return dfs call with root and INT_MIN.
 1. If root is null, return 0.
 2. If root is greater than or equal to currMax, increment count.
 3. Update currMax to max of currMax and root->val.

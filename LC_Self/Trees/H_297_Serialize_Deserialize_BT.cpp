@@ -56,20 +56,22 @@ public:
 private:
 
     void serialize(CustomTree::TreeNode* root, ostringstream& out) {
-        if (root) {
+        if (root == nullptr) {
+            out << "# ";
+        } else {
             out << root->val << ' ';
             serialize(root->left, out);
             serialize(root->right, out);
-        } else {
-            out << "# ";
         }
     }
 
     CustomTree::TreeNode* deserialize(istringstream& in) {
         string val;
         in >> val;
+
         if (val == "#")
             return nullptr;
+
         CustomTree::TreeNode* root = new CustomTree::TreeNode(stoi(val));
         root->left = deserialize(in);
         root->right = deserialize(in);

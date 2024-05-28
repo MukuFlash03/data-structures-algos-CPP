@@ -61,8 +61,12 @@ int main() {
 
     CustomLL cll;
     CustomLL::ListNode* head = cll.createLL(nums);
+    // CustomLL::ListNode* reversed = head;
+    // reverseList(reversed);
+    
     CustomLL::ListNode* reversed = reverseList(head);
     
+    cll.printList(head);
     cll.printList(reversed);
 
     return 0;

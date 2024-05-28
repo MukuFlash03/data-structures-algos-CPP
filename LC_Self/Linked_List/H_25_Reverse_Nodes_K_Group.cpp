@@ -90,7 +90,7 @@ CustomLL::ListNode* reverseKGroup(CustomLL::ListNode* head, int k) {
         CustomLL::ListNode* next = kth->next;
         kth->next = NULL;
         
-        reverseLL(temp);
+        kth = reverseLL(temp);
 
         if (temp == head)
             // head = kth;
