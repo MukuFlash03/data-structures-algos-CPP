@@ -48,7 +48,8 @@ CustomLL::ListNode* removeNthFromEnd(CustomLL::ListNode** head, int n) {
     // while (fast == NULL)
     //     return (*head)->next;
 
-    while (fast != NULL) {
+    // while (fast != NULL) {
+    while (fast) {
         slow = slow->next;
         fast = fast->next;
     }

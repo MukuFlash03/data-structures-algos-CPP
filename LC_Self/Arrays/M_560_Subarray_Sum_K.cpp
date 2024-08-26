@@ -39,6 +39,7 @@ B. Sliding Window (Many failed testcases)
 #include<stdio.h>
 #include<iostream>
 #include<vector>
+#include<map>
 
 using namespace std;
 
@@ -73,7 +74,7 @@ int main() {
     // vector<int> nums = {1,2,3};
     // int k = 3;
 
-    int count = subarraySum(7, nums);
+    int count = subarraySum(nums, k);
     cout << "Total number of subarrays = " << count << endl;
 
     return 0;

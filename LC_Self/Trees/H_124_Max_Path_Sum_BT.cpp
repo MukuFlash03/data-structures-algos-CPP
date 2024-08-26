@@ -19,7 +19,14 @@ Idea:
 2. Go via left subtree and find maximum path sum without splitting.
 3. Go via right subtree and find maximum path sum without splitting.
 4. Splitting is allowed if any ancestor node hasn't split, else splitting not allowed if already split at higher level.
-5. At the current node:
+    - If we split at a node and traverse via both its left and right nodes, then we cannot get its parents.
+5. For each node, calculate max path sum without splitting and with splitting.
+    - To parent, return the sum of current node value and max of left and right subtree.
+    - For current node, result is sum of:
+        max path sum of left subtree without splitting +
+        max path sum of right subtree without splitting +
+        current node value
+6. At the current node:
     - If splitting is allowed, total path sum is:
         = Left path sum + Current node value + Right path sum
         This is the value added to result, if greater than current result.
@@ -29,8 +36,8 @@ Idea:
         This is the value returned by DFS for left and right subtrees.
         This is because, the reason we're calculating max of left and right is because we split from current node (inherently as we did dfs(left) and dfs(right)).
         So, we can't split further as we've already split at higher level, so we take max of left and right path sums.
-6. In case of -ve node values, we can choose not to include in path by taking max of 0 and node value.
-7. Return maximum path sum.
+7. In case of -ve node values, we can choose not to include in path by taking max of 0 and node value.
+8. Return maximum path sum.
 
 
 Essentially, at each point we are calculating two things:

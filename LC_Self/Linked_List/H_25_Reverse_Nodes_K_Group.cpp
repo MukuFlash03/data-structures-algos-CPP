@@ -22,20 +22,29 @@ Space Complexity: O(1)
 
 0. Iterate over LL.
 1. Get Kth node.
-2. If Kth node is NULL, means there are not sufficient nodes in group, which will be last group/
-    3. If previous node is not NULL, then connect the last group with the previous group.
-    4. Break the loop.
+2. If Kth node is NULL, means there are not sufficient nodes in current group:
+    3. If previous node is not NULL, then:
+        Current group is not only group.
+        There are multiple groups before this current group having Kth node as NULL.
+        Connect the current last group with the previous group.
+    4. Else: 
+        It means that the current group is the only group and there are no groups before it.
+    5. Break the loop.
 
-5. Store the next node of the last node of the group.
-6. Break off the current group from LL by setting next to NULL.
+6. Store the next node of the last node of the group.
+7. Break off the current group from LL by setting next to NULL.
 
-7. Reverse the current group.
+8. Reverse the current group.
 
-8. If current group is first group, set the head to the kth node, which is now the leftmost or first node of the group.
-9. Else, connect previous reversed group with current reversed group by setting next of previous group to kth node of current group.
+9. If current group is the first group:
+    Set the head to the kth node, which is now the leftmost or first node of the group.
+10. Else:
+    Connect previous reversed group with current reversed group by setting next of previous group to kth node of current group.
 
-10. Set prev to current group's last node (which was first node before reversing).
-11. Set temp to next of current group's original last node which points to next group's first node. (Stored in Step 5).
+11. Set prev to current group's last node (which was first node before reversing).
+12. Set temp to next of current group's original last node which points to next group's first node. (Stored in Step 5).
+
+13. Return head.
 */
 
 #include<stdlib.h>

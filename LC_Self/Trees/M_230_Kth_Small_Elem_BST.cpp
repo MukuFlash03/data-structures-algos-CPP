@@ -30,7 +30,7 @@ A. Inorder Traversal
 
 using namespace std;
 
-void preOrder(CustomTree::TreeNode* root, vector<int>&resPre) {
+void preOrder(CustomTree::TreeNode* root, vector<int>& resPre) {
     if(!root) 
         return;
     resPre.push_back(root->val);
@@ -38,7 +38,7 @@ void preOrder(CustomTree::TreeNode* root, vector<int>&resPre) {
     preOrder(root->right, resPre);
 }
 
-void postOrder(CustomTree::TreeNode* root, vector<int>&resPost) {
+void postOrder(CustomTree::TreeNode* root, vector<int>& resPost) {
     if(!root) 
         return;
     postOrder(root->left, resPost);
@@ -46,7 +46,7 @@ void postOrder(CustomTree::TreeNode* root, vector<int>&resPost) {
     resPost.push_back(root->val);
 }
 
-void inOrder(CustomTree::TreeNode* root, vector<int>&resIn) {
+void inOrder(CustomTree::TreeNode* root, vector<int>& resIn) {
     if(!root) 
         return;
     inOrder(root->left, resIn);

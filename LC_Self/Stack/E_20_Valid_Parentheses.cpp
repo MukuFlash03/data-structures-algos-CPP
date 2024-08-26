@@ -31,13 +31,13 @@ using namespace std;
 string combs;
 vector<string> result;
 
-map<char, char> create_map() {
-    map<char, char> letMap;
-    letMap[')'] = '(';
-    letMap[']'] = '[';
-    letMap['}'] = '{';
-    return letMap;
-}
+// map<char, char> create_map() {
+//     map<char, char> letMap;
+//     letMap[')'] = '(';
+//     letMap[']'] = '[';
+//     letMap['}'] = '{';
+//     return letMap;
+// }
 
 // map<char, char> braces = create_map();
 

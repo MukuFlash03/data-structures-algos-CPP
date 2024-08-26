@@ -40,9 +40,9 @@ int countPalindromes(std::string s, int l, int r) {
 }
 
 int countSubstrings(std::string s) {
-    int i, count = 0;
+    int count = 0;
 
-    for (i = 0; i < s.length(); i++) {
+    for (int i = 0; i < s.length(); i++) {
         count += countPalindromes(s,i,i); // Odd length middle palin strings: l = i, r = i
         count += countPalindromes(s,i,i+1); // Even length middle palin strings: l = i, r = i + 1
     }

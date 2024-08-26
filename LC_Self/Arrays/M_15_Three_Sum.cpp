@@ -38,12 +38,9 @@ vector<vector<int>> threeSum(vector<int>& nums) {
         return {};
 
     vector<vector<int>> result;
-    vector<int> triplets;
     int sum = 0, l, r;
 
     for (int i = 0; i < nums.size(); i++) {
-
-
         if ( (i > 0) && (nums[i] == nums[i-1]) )
             continue;
         
